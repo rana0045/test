@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <title>
+    Ultimate Bot
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+  <link href="./assets/css/black-dashboard.css?v=1.1.1" rel="stylesheet" />
+  <link href="./assets/css/custom.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="main-panel">
+      <div class="card full-vh no-margin">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-2">
+              <ul class="nav nav-pills nav-pills-primary nav-pills-icons flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#link11" id="main">
+                    <i class="tim-icons icon-bulb-63"></i> Main
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#link12" id="orders">
+                    <i class="tim-icons icon-coins"></i> Orders
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#link13" id="manual">
+                    <i class="tim-icons icon-bank"></i> Manual
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#link14" id="setting-link">
+                    <i class="tim-icons icon-settings"></i> Settings
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#link15" id="about">
+                    <i class="tim-icons icon-single-02"></i> About
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-10">
+              <div class="tab-content">
+                <div class="tab-pane" id="link11">
+                  <form id="main-form" method="POST">
+                    <div class="row">
+                      <div class="col-8 ml-auto mr-auto control">
+                        <div class="card">
+                          <div class="card-header">
+                            <span>** Global setting **</span>
+                          </div>
+                          <div class="card-body">
+                            <form class="form-horizontal">
+                              <div class="row mb-3">
+                                <div class="col-md-3">
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input class="form-check-input" type="checkbox" name="main-reinvestment"
+                                        id="main-reinvestment">
+                                      <span class="form-check-sign">
+                                        <span class="check"></span>
+                                      </span>
+                                      <span data-toggle="tooltip" data-placement="top"
+                                        title="Reinvest for the next order. Eg: you used 0.1 BTC to trade and gained to 0.1015 BTC. If this option is enabled, then it will use 0.1015 BTC for the next trade. If it is disabled, the bot will use 0.1 BTC instead">Reinvestment</span>
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input class="form-check-input" type="checkbox" name="main-break-event" checked
+                                        id="main-break-event">
+                                      <span class="form-check-sign">
+                                        <span class="check"></span>
+                                      </span>
+                                      <span data-toggle="tooltip" data-placement="top"
+                                        title="When your target profit hits 50% in price, the bot will change the stop loss to break-even price (your entry price)">Break-Even Stop Loss</span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="5 means after 5 minutes, if the bot cannot buy the coin, it will cancel the order">Time
+                                  Order Expiration</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" name="main-time-order"
+                                      id="main-time-order" value="5"
+                                      placeholder="Eg: 5 means the order will be expired in 5 minutes">
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <span>Minute(s)</span>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="The time frame for the main marketplace">Time Frame</label>
+                                <div class="col-md-9">
+                                  <div class="form-group">
+                                    <select class="custom-select dark-background" id="main-time-frame"
+                                      name="main-time-frame">
+                                      <option value="1m">1 minute</option>
+                                      <option value="3m">3 minute</option>
+                                      <option value="5m" selected>5 minutes</option>
+                                      <option value="15m">15 minutes</option>
+                                      <option value="30m">30 minutes</option>
+                                      <option value="1h">1 hour</option>
+                                      <option value="2h">2 hours</option>
+                                      <option value="4h">4 hours</option>
+                                      <option value="6h">6 hours</option>
+                                      <option value="8h">8 hours</option>
+                                      <option value="12h">12 hours</option>
+                                      <option value="1d">1 day</option>
+                                      <option value="1w">1 week</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="Define how often the bot will trade. I recommend to stick to the Intensive option">Trading
+                                  Strictness</label>
+                                <div class="col-md-9">
+                                  <div class="form-group">
+                                    <select class="custom-select dark-background" id="main-trading-strictness"
+                                      name="main-trading-strictness">
+                                      <option value="intensive">Intensive (Most reliable, but it takes more time)
+                                      </option>
+                                      <option value="hard">Hard</option>
+                                      <option value="medium" selected>Medium</option>
+                                      <option value="low">Low</option>
+                                      <option value="naive">Naive (Trade a lot, but it could be dangerous)</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="If you don't want the bot to trade on specific symbols, please list it in here">Skip
+                                  Symbols</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <select class="custom-select dark-background" id="main-skip-symbol"
+                                      name="main-skip-symbol" multiple>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input class="form-check-input" type="checkbox" name="main-skip-symbol-reverse" checked
+                                        id="main-skip-symbol-reverse">
+                                      <span class="form-check-sign">
+                                        <span class="check"></span>
+                                      </span>
+                                      <span data-toggle="tooltip" data-placement="top"
+                                        title="If you tick this checkbox, only these pairs will be scanned">Reverse</span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="50000 means the market should have 50000 USD volume in a day">Minimum Volume</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" name="main-minimum-volume"
+                                      id="main-minimum-volume" value="50000"
+                                      placeholder="Eg: 50000 means the market should have 50000 USD volume in a day">
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <span>USD</span>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top" title="If you chose 'Live' mode, the bot will auto buy / sell for you.
+                                  If you choose 'Notification' mode, then the bot only sends you signals and it is up to you to buy the coin or not.
+                                  ">Mode</label>
+                                <div class="col-md-9">
+                                  <div class="form-group">
+                                    <select class="custom-select dark-background" id="main-mode" name="main-mode">
+                                      <option value="live">Live</option>
+                                      <option value="notification">Notification</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="The interval between 2 scan">Scan Interval</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" name="main-scan-interval"
+                                      id="main-scan-interval" value="10"
+                                      placeholder="Eg: The interval between 2 scan">
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <span>Second(s)</span>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8 ml-auto mr-auto control">
+                        <div class="card">
+                          <div class="card-header">
+                            <span>** Market-Neutral Strategy **: Binance Global (Spot and Future market). Basically, you buy on spot market and short on future market at the same time to earn funding fee - need USDT to operate (you can check it <a href="https://www.binance.com/en/blog/421499824684900458/Exploring-MarketNeutral-Strategies-in-CryptoDerivatives-">HERE</a>) (Pretty safe, almost no risk)</span>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="main-use-market-neutral-strategy"
+                                      id="main-use-market-neutral-strategy">
+                                    <span class="form-check-sign">
+                                      <span class="check"></span>
+                                    </span>
+                                    <span data-toggle="tooltip" data-placement="top" title="Use Market-Neutral strategy">Use Market-Neutral
+                                      strategy</span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <form class="form-horizontal">
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="Define maximum open positions. The bot will wait until these positions to be filled">Maximum
+                                  open positions</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" name="main-market-neutral-max-open-position"
+                                      id="main-market-neutral-max-open-position" value="2" placeholder="Maximum open positions">
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <span>Open positions</span>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="eg: You set $200, the bot will use $200 to buy the coin on spot market and use another $200 to short that coin">Use
+                                  Amount $</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" name="main-market-neutral-amount-dollar"
+                                      id="main-market-neutral-amount-dollar" value="20" placeholder="Amount $ to use per trade">
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <span>USDT</span>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="eg: The bot only opens the position if the funding fee is above this number (%)">Funding Fee Threshold</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" name="main-market-neutral-funding-fee"
+                                      id="main-market-neutral-funding-fee" value="0.1" placeholder="Funding Fee Threshold">
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <span>%</span>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8 ml-auto mr-auto control">
+                        <div class="card">
+                          <div class="card-header">
+                            <span>** DCA Strategy **: All exchanges (Spot market). In the long term: 2-5 years, this is the best strategy ever. Actually, there is some statistics about that, you can check it <a href="https://ofdollarsanddata.com/even-god-couldnt-beat-dollar-cost-averaging/">HERE</a> (Safe)</span>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="main-use-dca-strategy"
+                                      id="main-use-dca-strategy">
+                                    <span class="form-check-sign">
+                                      <span class="check"></span>
+                                    </span>
+                                    <span data-toggle="tooltip" data-placement="top" title="Use DCA strategy">Use DCA
+                                      strategy</span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <form class="form-horizontal">
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="eg: If you set it to $25 - 4h time frame - 1 week period, then the bot will buy $25 of the target coin every week when the price is below the lower Bollinger Bands">Use
+                                  Amount</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" name="main-dca-amount-dollar"
+                                      id="main-dca-amount-dollar" value="25" placeholder="Amount to use per trade">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="Eg: 1 week means the bot will buy theses coins every week">Period between each DCA</label>
+                                <div class="col-md-9">
+                                  <div class="form-group">
+                                    <select class="custom-select dark-background" id="main-dca-period"
+                                      name="main-dca-period">
+                                      <option value="86400000">1 day</option>
+                                      <option value="604800000" selected>1 week</option>
+                                      <option value="2592000000">1 month</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="Eg: If you set: BTC/USDT, ETH/USDT and 1-week period then the bot will buy BTC, ETH once a week">Trading Symbols</label>
+                                <div class="col-md-9">
+                                  <div class="form-group">
+                                    <select class="custom-select dark-background" id="main-dca-trading-symbol"
+                                      name="main-dca-trading-symbol" multiple>
+                                      <option value="BTC/USDT">BTC/USDT</option>
+                                      <option value="ETH/USDT">ETH/USDT</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8 ml-auto mr-auto control">
+                        <div class="card">
+                          <div class="card-header">
+                            <span>** Dip Strategy **: All exchanges (Spot market), suitable to an uptrend / sideway market (Kinda risky)</span>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="main-use-dip-strategy"
+                                      id="main-use-dip-strategy">
+                                    <span class="form-check-sign">
+                                      <span class="check"></span>
+                                    </span>
+                                    <span data-toggle="tooltip" data-placement="top" title="Use Dip strategy">Use Dip
+                                      strategy</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="main-use-dip-check-volatile-market"
+                                      id="main-use-dip-check-volatile-market">
+                                    <span class="form-check-sign">
+                                      <span class="check"></span>
+                                    </span>
+                                    <span data-toggle="tooltip" data-placement="top" title="When the entire market is volatile, the bot will automatically pause">Check volatile
+                                      market</span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <form class="form-horizontal">
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="The market place you want to trade, eg: BTC, ETH, BNB, ...">Market
+                                  Place</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <select class="custom-select dark-background" id="main-dip-market-place" disabled
+                                      name="main-dip-market-place">
+                                      <option value="BTC">BTC</option>
+                                      <option value="ETH">ETH</option>
+                                      <option value="BNB">BNB</option>
+                                      <option value="XRP">XRP</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input class="form-check-input" type="checkbox"
+                                        name="main-dip-use-market" id="main-dip-use-market">
+                                      <span class="form-check-sign">
+                                        <span class="check"></span>
+                                      </span>
+                                      <span data-toggle="tooltip" data-placement="top"
+                                        title="Decide to use this (main) market or not, eg: If your account holds BTC and USDT, the bot will scan on both 2 markets too">Use
+                                        Main Market</span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="eg: 15% means it will use 15% of your total funds. If you have 0.01 BTC in your account, you set 50%, so that means the bot will use 0.005 BTC per trade">Use
+                                  Fund %</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <select class="custom-select dark-background" id="main-dip-amount-percentage"
+                                      name="main-dip-amount-percentage">
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="% take profit, eg: The bot bought at rate 0.01, % take profit is 1.5%, it will place a selling order at rate 0.01015 (1.5%)">Take
+                                  Profit %</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" name="main-dip-take-profit-percentage"
+                                      id="main-dip-take-profit-percentage" value="0.5" placeholder="% Take Profit">
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <span>%</span>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="% stop loss, eg: The bot bought at rate 0.01, % stop loss is 3%, when the last price < 0.0097, it will stop loss">Stop
+                                  Loss %</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" name="main-dip-stop-loss-percentage"
+                                      id="main-dip-stop-loss-percentage" value="0.5" placeholder="% Stop Loss">
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <span>%</span>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="The stable market you want to trade, eg: USDT, USDC, TUSD">Stable
+                                  Market</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <select class="custom-select dark-background" id="main-dip-stable-market"
+                                      name="main-dip-stable-market">
+                                      <option value="USDT">USDT</option>
+                                      <option value="BUSD">BUSD</option>
+                                      <option value="PAX">PAX</option>
+                                      <option value="TUSD">TUSD</option>
+                                      <option value="USDC">USDC</option>
+                                      <option value="USDS">USDS</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input class="form-check-input" type="checkbox" checked
+                                        name="main-dip-use-stable-market" id="main-dip-use-stable-market">
+                                      <span class="form-check-sign">
+                                        <span class="check"></span>
+                                      </span>
+                                      <span data-toggle="tooltip" data-placement="top"
+                                        title="Decide to use stable market or not, eg: If your account holds BTC and USDT, the bot will scan on both 2 markets too">Use
+                                        Stable Market</span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="Define maximum open orders. The bot will wait until these orders to be filled. For your safety, I recommend set this to 2">Maximum
+                                  open orders</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" name="main-dip-max-open-order"
+                                      id="main-dip-max-open-order" value="2" placeholder="Maximum open orders">
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <span>Open orders</span>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8 ml-auto mr-auto control">
+                        <div class="card">
+                          <div class="card-header">
+                            <span>** Spike Strategy **: Binance Global (Future market - Short only), suitable to a downtrend market (This strategy only uses 1X leverage). For more info, please read <a href="https://academy.binance.com/en/articles/the-ultimate-guide-to-trading-on-binance-futures">THIS</a>
+                              article. Note: When creating an API key, you need to enable "Future" option (Very Risky)</span>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="main-use-spike-strategy"
+                                      id="main-use-spike-strategy">
+                                    <span class="form-check-sign">
+                                      <span class="check"></span>
+                                    </span>
+                                    <span data-toggle="tooltip" data-placement="top" title="Use Spike strategy">Use
+                                      Spike strategy</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="main-use-spike-check-volatile-market"
+                                      id="main-use-spike-check-volatile-market">
+                                    <span class="form-check-sign">
+                                      <span class="check"></span>
+                                    </span>
+                                    <span data-toggle="tooltip" data-placement="top" title="When the entire market is volatile, the bot will automatically pause">Check volatile
+                                      market</span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <form class="form-horizontal">
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="eg: 5% means it will use 5% of your total funds. If you have 1000 USDT in your account, you set 5%, so that means the bot will use 50 USDT per trade. Due to safety (this strategy doesn't have stop loss), you can only set this up to 10%">Use
+                                  Fund %</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <select class="custom-select dark-background" id="main-spike-amount-percentage"
+                                      name="main-spike-amount-percentage">
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="% take profit, eg: The bot shorted at rate 0.01, % take profit is 5%, it will close the position at rate 0.0095 (5%)">Take
+                                  Profit %</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" name="main-spike-take-profit-percentage"
+                                      id="main-spike-take-profit-percentage" value="0.5" placeholder="% Take Profit">
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <span>%</span>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="% stop loss, eg: The bot shorted at rate 0.01, % stop loss is 7%, when the last price higher than 7% of your position price, it will stop loss">Stop
+                                  Loss %</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" name="main-spike-stop-loss-percentage"
+                                      id="main-spike-stop-loss-percentage" value="0.5" placeholder="% Stop Loss">
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <span>%</span>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                  title="Define maximum open positions. The bot will wait until these positions to be filled. For your safety, I recommend set this to 1">Maximum
+                                  open positions</label>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" name="main-spike-max-open-position"
+                                      id="main-spike-max-open-position" value="1" placeholder="Maximum open positions">
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <span>Open positions</span>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row flex-center">
+                      <button class="btn btn-primary btn-lg" id="main-start"><i
+                          class="tim-icons icon-triangle-right-17"></i> Start</button>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-8 ml-auto mr-auto">
+                        <div class="card">
+                          <div class="card-header">
+                            <h4 class="card-title">Notifications</h4>
+                          </div>
+                          <div class="card-body" id="trigger">
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane" id="link12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title">Main Assets</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive ps">
+                        <table class="table">
+                          <thead class="text-primary">
+                            <tr>
+                              <th class="text-center">
+                                Coin
+                              </th>
+                              <th class="text-center">
+                                Balance
+                              </th>
+                              <th class="text-center">
+                                In USD
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody id="list-assets">
+                          </tbody>
+                        </table>
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                          <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                          <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title">Earned Funding Fee</h4>
+                    </div>
+                    <div class="card-body">
+                      <a class="btn btn-fill btn-primary" href="https://www.binance.com/en/my/orders/futures/transactionhistory">Check</a>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title">Active / Pending Orders</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive ps">
+                        <table class="table">
+                          <thead class="text-primary">
+                            <tr>
+                              <th class="text-center">
+                                Date Time
+                              </th>
+                              <th class="text-center">
+                                Symbol
+                              </th>
+                              <th class="text-center">
+                                Quantity
+                              </th>
+                              <th class="text-center">
+                                Price
+                              </th>
+                              <th class="text-center">
+                                Type
+                              </th>
+                              <th class="text-center">
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody id="list-orders">
+                          </tbody>
+                        </table>
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                          <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                          <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title">History Orders (By the bot)</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive ps">
+                        <table class="table">
+                          <thead class="text-primary">
+                            <tr>
+                              <th class="text-center">
+                                Date Time
+                              </th>
+                              <th class="text-center">
+                                Symbol
+                              </th>
+                              <th class="text-center">
+                                Quantity
+                              </th>
+                              <th class="text-center">
+                                Price
+                              </th>
+                              <th class="text-center">
+                                Type
+                              </th>
+                              <th class="text-center">
+                                Profit/Loss
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody id="list-history-orders">
+                          </tbody>
+                        </table>
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                          <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                          <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="link13">
+                  <div class="trading-view-widget-container">
+                    <div id="trading-view-chart"></div>
+                  </div>
+                  <!-- TradingView Widget END -->
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title">Market</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <select class="custom-select dark-background" id="manual-symbol" name="manual-symbol">
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="card">
+                            <div class="card-header">
+                              <h4 class="card-title">Buy / Sell</h4>
+                            </div>
+                            <div class="card-body">
+                              <form class="form-horizontal" id="buy-form">
+                                <div class="row">
+                                  <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                    title="Price you want to buy">Entry Price</label>
+                                  <div class="col-md-7">
+                                    <div class="form-group">
+                                      <input type="number" class="form-control" name="manual-entry-price"
+                                        id="manual-entry-price" value="0" placeholder="Price you want to buy">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-2">
+                                    <div class="form-group">
+                                      <select class="custom-select dark-background rate-type" id="manual-entry-price-type"
+                                        name="manual-entry-price-type">
+                                        <option value="limit">Limit</option>
+                                        <option value="market" selected>Market</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                    title="Amount to buy">Amount</label>
+                                  <div class="col-md-7">
+                                    <div class="form-group">
+                                      <input type="number" class="form-control" name="manual-amount" id="manual-amount"
+                                        value="5" placeholder="Amount to buy">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-2">
+                                    <div class="form-group">
+                                      <select class="custom-select dark-background rate-type" id="manual-amount-type"
+                                        name="manual-amount-type">
+                                        <option value="coin">Coin</option>
+                                        <option value="percentage" selected>Percentage</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                    title="% Take Profit">% Take Profit</label>
+                                  <div class="col-md-7">
+                                    <div class="form-group">
+                                      <input type="number" class="form-control" name="manual-take-profit-percentage"
+                                        id="manual-take-profit-percentage" value="10" placeholder="% Take Profit">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-2">
+                                    <span>%</span>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <label class="col-md-3 col-form-label" data-toggle="tooltip" data-placement="top"
+                                    title="% Stop Loss">% Stop Loss</label>
+                                  <div class="col-md-7">
+                                    <div class="form-group">
+                                      <input type="number" class="form-control" name="manual-stop-loss-percentage"
+                                        id="manual-stop-loss-percentage" value="0.5" placeholder="% Stop Loss">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-2">
+                                    <span>%</span>
+                                  </div>
+                                </div>
+                                <div class="row flex-center">
+                                  <button class="btn btn-primary btn-lg" id="manual-execute">
+                                    <i class="tim-icons icon-triangle-right-17"></i>
+                                    Execute</button>
+                                </div>
+                                <p class="text-success" id="manual-execute-text" style="display: none;">
+                                  Order placed!</p>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="link14">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title">Current Account</h4>
+                      <span>Select the account that you want the bot to connect to</span>
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <select class="custom-select dark-background" id="account-list" name="account-list">
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <form class="form-horizontal" id="current-account">
+                        <div class="row">
+                          <label class="col-md-3 col-form-label">Account Name</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="text" class="form-control" name="name" id="name">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <label class="col-md-3 col-form-label">Exchange ID</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <select class="custom-select dark-background" id="exchangeID" name="exchangeID">
+                                <option value="binance">Binance</option>
+                                <option value="binanceus">Binance US</option>
+                                <option value="bittrex">Bittrex</option>
+                                <option value="kucoin">Kucoin</option>
+                                <option value="stex">Stex</option>
+                                <option value="yobit">Yobit</option>
+                                <option value="hitbtc">Hitbtc</option>
+                                <option value="probit">Probit</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <label class="col-md-3 col-form-label">API Key</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="password" class="form-control" name="apiKey" id="apiKey"
+                                placeholder="Your API key">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <label class="col-md-3 col-form-label">Secret Key</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="password" class="form-control" name="secret" id="secret"
+                                placeholder="Your Secret key">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <label class="col-md-3 col-form-label">Passphrase</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="password" class="form-control" name="password" id="password"
+                                placeholder="Only available on Kucoin">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <label class="col-md-3 col-form-label">Telegram User Id</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="text" class="form-control" name="telegramUserId" id="telegramUserId"
+                                placeholder="Your Telegram User ID. It should be a number">
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="card-footer">
+                      <form class="form-horizontal">
+                        <div class="row">
+                          <label class="col-md-3 col-form-label"></label>
+                          <div class="col-md-9">
+                            <button class="btn btn-fill btn-primary" id="save-account">Save</button>
+                            <button class="btn btn-warning" id="delete-account">Delete</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title">Add New Account</h4>
+                    </div>
+                    <div class="card-body">
+                      <form class="form-horizontal" id="add-new-form">
+                        <div class="row">
+                          <label class="col-md-3 col-form-label">Account Name</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="text" class="form-control" name="name" id="add-new-account-name"
+                                placeholder="Account's name">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <label class="col-md-3 col-form-label">Exchange ID</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <select class="custom-select dark-background" id="add-new-exchangeID" name="exchangeID">
+                                <option value="binance">Binance</option>
+                                <option value="binanceus">Binance US</option>
+                                <option value="bittrex">Bittrex</option>
+                                <option value="kucoin">Kucoin</option>
+                                <option value="stex">Stex</option>
+                                <option value="yobit">Yobit</option>
+                                <option value="hitbtc">Hitbtc</option>
+                                <option value="probit">Probit</option>
+                                <option value="huobipro">Huobi Pro</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <label class="col-md-3 col-form-label">API Key</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="password" class="form-control" name="apiKey" id="add-new-apiKey"
+                                placeholder="Your API key">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <label class="col-md-3 col-form-label">Secret Key</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="password" class="form-control" name="secret" id="add-new-secret"
+                                placeholder="Your Secret key">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <label class="col-md-3 col-form-label">Passphrase</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="password" class="form-control" name="password" id="add-new-password"
+                                placeholder="Only available on Kucoin">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <label class="col-md-3 col-form-label">Telegram User Id</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="text" class="form-control" name="telegramUserId"
+                                id="add-new-telegram-user-id"
+                                placeholder="Your Telegram User ID. It should be a number">
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="card-footer">
+                      <form class="form-horizontal">
+                        <div class="row">
+                          <label class="col-md-3 col-form-label"></label>
+                          <div class="col-md-9">
+                            <button type="submit" class="btn btn-fill btn-primary" id="add-new">Add New
+                              Account</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="link15">
+                  <div class="card card-user">
+                    <div class="card-body">
+                      <p class="card-text">
+                      </p>
+                      <div class="author">
+                        <div class="block block-one"></div>
+                        <div class="block block-two"></div>
+                        <div class="block block-three"></div>
+                        <div class="block block-four"></div>
+                        <a href="javascript:void(0)">
+                          <img class="avatar" src="../../assets/img/author_onfqzmpgvr.jpg" alt="Ultimate Bot">
+                          <h5 class="title">Ultimate Bot</h5>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script>
+    if (typeof module === 'object') {
+      window.module = module;
+      module = undefined;
+    }
+  </script>
+  <!--   Core JS Files   -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+  <script src="./assets/js/core/popper.min.js"></script>
+  <script src="./assets/js/core/bootstrap.min.js"></script>
+  <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!-- Chart JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js"></script>
+  <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap-wizard/1.2/jquery.bootstrap.wizard.min.js">
+  </script>
+  <!--  Notifications Plugin    -->
+  <script src="./assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="./assets/js/black-dashboard.min.js?v=1.1.1"></script>
+  <!-- Sweet Alert2  -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script>
+    if (window.module) module = window.module;
+  </script>
+  <script src="./ui.js"></script>
+  <script src="./renderer.js"></script>
+</body>
+
+</html>
